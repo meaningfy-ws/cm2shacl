@@ -31,7 +31,7 @@ epo:AgentInRole a sh:NodeShape ;
                 "G212/H212",
                 "G213/H213" ;
             sh:nodeKind sh:IRI ;
-            sh:or ( [ sh:class epo:Business ] [ sh:class org:Organization ] ) ;
+            sh:or ( [ sh:class org:Organization ] [ sh:class epo:Business ] ) ;
             sh:path epo:playedBy ] ;
     sh:targetClass epo:AgentInRole .
 
@@ -81,40 +81,40 @@ epo:SubmissionStatisticalInformation a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G197/H197" ;
+    sh:property [ dcterms:source "G195/H195" ;
             sh:datatype xsd:integer ;
             sh:nodeKind sh:Literal ;
-            sh:path epo:hasReceivedNonEUTenders ],
-        [ dcterms:source "G196/H196" ;
-            sh:datatype xsd:integer ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasEUReceivedTenders ],
+            sh:path epo:hasReceivedSMETenders ],
+        [ dcterms:source "G193/H193" ;
+            sh:class epo:LotAwardOutcome ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:summarisesInformationForLotAwardOutcome ],
         [ dcterms:source "G221/H221",
                 "G222/H222" ;
             sh:class epo:MonetaryValue ;
             sh:nodeKind sh:IRI ;
             sh:path epo:hasHighestReceivedTenderValue ],
-        [ dcterms:source "G195/H195" ;
-            sh:datatype xsd:integer ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasReceivedSMETenders ],
-        [ dcterms:source "G198/H198" ;
-            sh:datatype xsd:integer ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasElectronicTenders ],
         [ dcterms:source "G194/H194" ;
             sh:datatype xsd:integer ;
             sh:nodeKind sh:Literal ;
             sh:path epo:hasReceivedTenders ],
+        [ dcterms:source "G197/H197" ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReceivedNonEUTenders ],
+        [ dcterms:source "G198/H198" ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasElectronicTenders ],
         [ dcterms:source "G219/H219",
                 "G220/H220" ;
             sh:class epo:MonetaryValue ;
             sh:nodeKind sh:IRI ;
             sh:path epo:hasLowestReceivedTenderValue ],
-        [ dcterms:source "G193/H193" ;
-            sh:class epo:LotAwardOutcome ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:summarisesInformationForLotAwardOutcome ] ;
+        [ dcterms:source "G196/H196" ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEUReceivedTenders ] ;
     sh:targetClass epo:SubmissionStatisticalInformation .
 
 epo:AccessTerm a sh:NodeShape ;
@@ -123,15 +123,15 @@ epo:AccessTerm a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G43/H43",
-                "G45/H45" ;
-            sh:datatype xsd:boolean ;
-            sh:in ( true false ) ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:isProcurementDocumentRestricted ],
-        [ dcterms:source "G46/H46" ;
+    sh:property [ dcterms:source "G46/H46" ;
             sh:nodeKind sh:Literal ;
             sh:path epo:hasRestrictedAccessURL ],
+        [ dcterms:source "G43/H43",
+                "G45/H45" ;
+            sh:datatype xsd:boolean ;
+            sh:in ( false true ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isProcurementDocumentRestricted ],
         [ dcterms:source "G44/H44" ;
             sh:nodeKind sh:Literal ;
             sh:path epo:hasPublicAccessURL ] ;
@@ -168,10 +168,6 @@ epo:Buyer a sh:NodeShape ;
             sh:class <http://data.europa.eu/m8g/ContactPoint> ;
             sh:nodeKind sh:IRI ;
             sh:path epo:hasContactPointInRole ],
-        [ dcterms:source "G20/H20",
-                "G37/H37" ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasBuyerProfile ],
         [ dcterms:source "G10/H10",
                 "G11/H11",
                 "G12/H12",
@@ -188,7 +184,11 @@ epo:Buyer a sh:NodeShape ;
                 "G9/H9" ;
             sh:class org:Organization ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:playedBy ] ;
+            sh:path epo:playedBy ],
+        [ dcterms:source "G20/H20",
+                "G37/H37" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBuyerProfile ] ;
     sh:targetClass epo:Buyer .
 
 epo:Contract a sh:NodeShape ;
@@ -197,17 +197,10 @@ epo:Contract a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G180/H180" ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasTitle ],
-        [ dcterms:source "G192/H192" ;
+    sh:property [ dcterms:source "G192/H192" ;
             sh:datatype xsd:date ;
             sh:nodeKind sh:Literal ;
             sh:path epo:hasContractConclusionDate ],
-        [ dcterms:source "G178/H178" ;
-            sh:class epo:Identifier ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasID ],
         [ dcterms:source "G176/H176" ;
             sh:class epo:Lot ;
             sh:nodeKind sh:IRI ;
@@ -215,7 +208,14 @@ epo:Contract a sh:NodeShape ;
         [ dcterms:source "G182/H182" ;
             sh:class epo:LotAwardOutcome ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:resultsFromLotAwardOutcome ] ;
+            sh:path epo:resultsFromLotAwardOutcome ],
+        [ dcterms:source "G180/H180" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasTitle ],
+        [ dcterms:source "G178/H178" ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ] ;
     sh:targetClass epo:Contract .
 
 epo:DirectAwardTerm a sh:NodeShape ;
@@ -224,7 +224,10 @@ epo:DirectAwardTerm a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G273/H273",
+    sh:property [ dcterms:source "G288/H288" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasJustification ],
+        [ dcterms:source "G273/H273",
                 "G275/H275",
                 "G277/H277",
                 "G278/H278",
@@ -233,17 +236,14 @@ epo:DirectAwardTerm a sh:NodeShape ;
                 "G281/H281",
                 "G283/H283",
                 "G284/H284" ;
-            sh:in ( <http://publications.europa.eu/resource/authority/direct-award-justification/liquidator> <http://publications.europa.eu/resource/authority/direct-award-justification/exclusive> <http://publications.europa.eu/resource/authority/direct-award-justification/artistic> <http://publications.europa.eu/resource/authority/direct-award-justification/unsuitable> <http://publications.europa.eu/resource/authority/direct-award-justification/urgency> <http://publications.europa.eu/resource/authority/direct-award-justification/repetition> <http://publications.europa.eu/resource/authority/direct-award-justification/closure> <http://publications.europa.eu/resource/authority/direct-award-justification/technical> ) ;
+            sh:in ( <http://publications.europa.eu/resource/authority/direct-award-justification/technical> <http://publications.europa.eu/resource/authority/direct-award-justification/artistic> <http://publications.europa.eu/resource/authority/direct-award-justification/exclusive> <http://publications.europa.eu/resource/authority/direct-award-justification/closure> <http://publications.europa.eu/resource/authority/direct-award-justification/urgency> <http://publications.europa.eu/resource/authority/direct-award-justification/liquidator> <http://publications.europa.eu/resource/authority/direct-award-justification/repetition> <http://publications.europa.eu/resource/authority/direct-award-justification/unsuitable> ) ;
             sh:nodeKind sh:IRI ;
             sh:path epo:hasDirectAwardJustification ],
         [ dcterms:source "G272/H272",
                 "G274/H274" ;
             sh:class epo:Procedure ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:refersToPreviousProcedure ],
-        [ dcterms:source "G288/H288" ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasJustification ] ;
+            sh:path epo:refersToPreviousProcedure ] ;
     sh:targetClass epo:DirectAwardTerm .
 
 epo:FrameworkAgreementTerm a sh:NodeShape ;
@@ -294,13 +294,18 @@ epo:Notice a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G137/H137" ;
-            sh:class epo:PlannedProcurementPart ;
+    sh:property [ dcterms:source "G112/H112" ;
+            sh:class epo:Lot ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:announcesPlannedProcurementPart ],
-        [ dcterms:source "G3/H3" ;
+            sh:path epo:refersToLot ],
+        [ dcterms:source "G175/H175" ;
+            sh:class epo:Contract ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:hasLegalBasis ],
+            sh:path epo:announcesContract ],
+        [ dcterms:source "G268/H268" ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDispatchDate ],
         [ dcterms:source "G108/H108",
                 "G109/H109",
                 "G110/H110",
@@ -308,10 +313,25 @@ epo:Notice a sh:NodeShape ;
             sh:class epo:NoticeAwardInformation ;
             sh:nodeKind sh:IRI ;
             sh:path epo:announcesNoticeAwardInformation ],
+        [ dcterms:source "G3/H3" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasLegalBasis ],
+        [ dcterms:source "G137/H137" ;
+            sh:class epo:PlannedProcurementPart ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:announcesPlannedProcurementPart ],
+        [ dcterms:source "G4/H4" ;
+            sh:datatype xsd:string ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasPublicationDate ],
         [ dcterms:source "G168/H168" ;
             sh:class epo:Identifier ;
             sh:nodeKind sh:IRI ;
             sh:path epo:hasID ],
+        [ dcterms:source "G168/H168" ;
+            sh:class epo:Notice ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:refersToPrevious ],
         [ dcterms:source "G23/H23",
                 "G237/H237",
                 "G247/H247",
@@ -322,28 +342,8 @@ epo:Notice a sh:NodeShape ;
                 "G66/H66",
                 "G68/H68" ;
             sh:nodeKind sh:IRI ;
-            sh:or ( [ sh:class epo:Mediator ] [ sh:class epo:ReviewProcedureInformationProvider ] [ sh:class epo:TenderReceiver ] [ sh:class epo:Buyer ] [ sh:class epo:Reviewer ] [ sh:class epo:ProcurementProcedureInformationProvider ] ) ;
+            sh:or ( [ sh:class epo:Reviewer ] [ sh:class epo:ReviewProcedureInformationProvider ] [ sh:class epo:Buyer ] [ sh:class epo:ProcurementProcedureInformationProvider ] [ sh:class epo:TenderReceiver ] [ sh:class epo:Mediator ] ) ;
             sh:path epo:announcesRole ],
-        [ dcterms:source "G168/H168" ;
-            sh:class epo:Notice ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:refersToPrevious ],
-        [ dcterms:source "G112/H112" ;
-            sh:class epo:Lot ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:refersToLot ],
-        [ dcterms:source "G175/H175" ;
-            sh:class epo:Contract ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:announcesContract ],
-        [ dcterms:source "G4/H4" ;
-            sh:datatype xsd:string ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasPublicationDate ],
-        [ dcterms:source "G268/H268" ;
-            sh:datatype xsd:date ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasDispatchDate ],
         [ dcterms:source "G39/H39",
                 "G40/H40",
                 "G41/H41" ;
@@ -358,14 +358,14 @@ epo:Period a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G131/H131" ;
+    sh:property [ dcterms:source "G130/H130" ;
             sh:datatype xsd:date ;
             sh:nodeKind sh:Literal ;
-            sh:path epo:hasEnd ],
-        [ dcterms:source "G130/H130" ;
+            sh:path epo:hasBeginning ],
+        [ dcterms:source "G131/H131" ;
             sh:datatype xsd:date ;
             sh:nodeKind sh:Literal ;
-            sh:path epo:hasBeginning ] ;
+            sh:path epo:hasEnd ] ;
     sh:targetClass epo:Period .
 
 epo:PlannedProcurementPart a sh:NodeShape ;
@@ -386,7 +386,18 @@ epo:ProcedureTerm a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G41/H41" ;
+    sh:property [ dcterms:source "G105/H105" ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMaximumNumberOfLotsToBeAwarded ],
+        [ dcterms:source "G104/H104" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isOneLotOnlyAllowed ],
+        [ dcterms:source "G40/H40" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasCrossBorderLaw ],
+        [ dcterms:source "G41/H41" ;
             sh:datatype xsd:boolean ;
             sh:in ( true ) ;
             sh:nodeKind sh:Literal ;
@@ -394,28 +405,17 @@ epo:ProcedureTerm a sh:NodeShape ;
         [ dcterms:source "G106/H106" ;
             sh:nodeKind sh:Literal ;
             sh:path epo:hasLotAwardCombination ],
-        [ dcterms:source "G104/H104" ;
-            sh:datatype xsd:boolean ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:isOneLotOnlyAllowed ],
         [ dcterms:source "G164/H164" ;
             sh:nodeKind sh:Literal ;
             sh:path epo:hasNationalProcedureRules ],
-        [ dcterms:source "G103/H103" ;
-            sh:datatype xsd:integer ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasMaximumLotSubmissionAllowed ],
-        [ dcterms:source "G105/H105" ;
-            sh:datatype xsd:integer ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasMaximumNumberOfLotsToBeAwarded ],
         [ dcterms:source "G102/H102" ;
             sh:datatype xsd:boolean ;
             sh:nodeKind sh:Literal ;
             sh:path epo:isSubmissionForAllLotsAllowed ],
-        [ dcterms:source "G40/H40" ;
+        [ dcterms:source "G103/H103" ;
+            sh:datatype xsd:integer ;
             sh:nodeKind sh:Literal ;
-            sh:path epo:hasCrossBorderLaw ] ;
+            sh:path epo:hasMaximumLotSubmissionAllowed ] ;
     sh:targetClass epo:ProcedureTerm .
 
 epo:ProcessPlanningTerm a sh:NodeShape ;
@@ -436,15 +436,7 @@ epo:ProcurementProcedureInformationProvider a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G58/H58",
-                "G59/H59",
-                "G60/H60",
-                "G61/H61",
-                "G63/H63" ;
-            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasContactPointInRole ],
-        [ dcterms:source "G49/H49",
+    sh:property [ dcterms:source "G49/H49",
                 "G51/H51",
                 "G52/H52",
                 "G53/H53",
@@ -454,7 +446,15 @@ epo:ProcurementProcedureInformationProvider a sh:NodeShape ;
                 "G57/H57" ;
             sh:class org:Organization ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:playedBy ] ;
+            sh:path epo:playedBy ],
+        [ dcterms:source "G58/H58",
+                "G59/H59",
+                "G60/H60",
+                "G61/H61",
+                "G63/H63" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ] ;
     sh:targetClass epo:ProcurementProcedureInformationProvider .
 
 epo:ReviewProcedureInformationProvider a sh:NodeShape ;
@@ -514,16 +514,16 @@ epo:SpecificDuration a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G127/H127" ;
-            sh:datatype xsd:decimal ;
-            sh:nodeKind sh:Literal ;
-            sh:path time:numericDuration ],
-        [ dcterms:source "G128/H128",
+    sh:property [ dcterms:source "G128/H128",
                 "G129/H129" ;
             sh:class time:TemporalUnit ;
             sh:in ( time:unitDay time:unitMonth ) ;
             sh:nodeKind sh:IRI ;
-            sh:path time:unitType ] ;
+            sh:path time:unitType ],
+        [ dcterms:source "G127/H127" ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path time:numericDuration ] ;
     sh:targetClass epo:SpecificDuration .
 
 epo:SubcontractingEstimate a sh:NodeShape ;
@@ -552,20 +552,20 @@ epo:SubmissionTerm a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G169/H169" ;
-            sh:datatype xsd:string ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasReceiptDeadline ],
-        [ dcterms:source "G171/H171" ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasLanguage ],
-        [ dcterms:source "G170/H170" ;
+    sh:property [ dcterms:source "G170/H170" ;
             sh:datatype xsd:string ;
             sh:nodeKind sh:Literal ;
             sh:path epo:hasReceiptExpressionDeadline ],
         [ dcterms:source "G65/H65" ;
             sh:nodeKind sh:Literal ;
-            sh:path epo:hasSubmissionURL ] ;
+            sh:path epo:hasSubmissionURL ],
+        [ dcterms:source "G169/H169" ;
+            sh:datatype xsd:string ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReceiptDeadline ],
+        [ dcterms:source "G171/H171" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasLanguage ] ;
     sh:targetClass epo:SubmissionTerm .
 
 epo:Tender a sh:NodeShape ;
@@ -590,14 +590,14 @@ epo:TenderAwardOutcome a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G190/H190" ;
-            sh:class epo:Tender ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:describesTender ],
-        [ dcterms:source "G191/H191" ;
+    sh:property [ dcterms:source "G191/H191" ;
             sh:class epo:Winner ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:indicatesAwardOfLotToWinner ] ;
+            sh:path epo:indicatesAwardOfLotToWinner ],
+        [ dcterms:source "G190/H190" ;
+            sh:class epo:Tender ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:describesTender ] ;
     sh:targetClass epo:TenderAwardOutcome .
 
 epo:TenderReceiver a sh:NodeShape ;
@@ -606,15 +606,7 @@ epo:TenderReceiver a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G76/H76",
-                "G77/H77",
-                "G78/H78",
-                "G79/H79",
-                "G81/H81" ;
-            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasContactPointInRole ],
-        [ dcterms:source "G67/H67",
+    sh:property [ dcterms:source "G67/H67",
                 "G69/H69",
                 "G70/H70",
                 "G71/H71",
@@ -624,7 +616,15 @@ epo:TenderReceiver a sh:NodeShape ;
                 "G75/H75" ;
             sh:class org:Organization ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:playedBy ] ;
+            sh:path epo:playedBy ],
+        [ dcterms:source "G76/H76",
+                "G77/H77",
+                "G78/H78",
+                "G79/H79",
+                "G81/H81" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ] ;
     sh:targetClass epo:TenderReceiver .
 
 <http://data.europa.eu/m8g/Channel> a sh:NodeShape ;
@@ -633,14 +633,14 @@ epo:TenderReceiver a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G82/H82" ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasURL ],
-        [ dcterms:source "G83/H83" ;
+    sh:property [ dcterms:source "G83/H83" ;
             sh:datatype xsd:boolean ;
             sh:in ( true ) ;
             sh:nodeKind sh:Literal ;
-            sh:path epo:isAdhocChannel ] ;
+            sh:path epo:isAdhocChannel ],
+        [ dcterms:source "G82/H82" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasURL ] ;
     sh:targetClass <http://data.europa.eu/m8g/Channel> .
 
 dcterms:Location a sh:NodeShape ;
@@ -649,13 +649,13 @@ dcterms:Location a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G121/H121" ;
+    sh:property [ dcterms:source "G120/H120" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ],
+        [ dcterms:source "G121/H121" ;
             sh:class <http://www.w3.org/ns/locn#Address> ;
             sh:nodeKind sh:IRI ;
-            sh:path <http://www.w3.org/ns/locn#address> ],
-        [ dcterms:source "G120/H120" ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasNutsCode ] ;
+            sh:path <http://www.w3.org/ns/locn#address> ] ;
     sh:targetClass dcterms:Location .
 
 epo:ContractTerm a sh:NodeShape ;
@@ -664,21 +664,11 @@ epo:ContractTerm a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G130/H130",
-                "G131/H131" ;
-            sh:class epo:Period ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:definesContractPeriod ],
-        [ dcterms:source "G233/H233" ;
+    sh:property [ dcterms:source "G233/H233" ;
             sh:datatype xsd:boolean ;
             sh:in ( true ) ;
             sh:nodeKind sh:Literal ;
             sh:path epo:hasEInvoicing ],
-        [ dcterms:source "G234/H234" ;
-            sh:datatype xsd:boolean ;
-            sh:in ( true ) ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasEPayment ],
         [ dcterms:source "G120/H120",
                 "G121/H121" ;
             sh:class dcterms:Location ;
@@ -689,15 +679,25 @@ epo:ContractTerm a sh:NodeShape ;
             sh:in ( true ) ;
             sh:nodeKind sh:Literal ;
             sh:path epo:hasEOrdering ],
+        [ dcterms:source "G94/H94" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContractNatureType ],
         [ dcterms:source "G127/H127",
                 "G128/H128",
                 "G129/H129" ;
             sh:class epo:SpecificDuration ;
             sh:nodeKind sh:IRI ;
             sh:path epo:definesContractDuration ],
-        [ dcterms:source "G94/H94" ;
+        [ dcterms:source "G234/H234" ;
+            sh:datatype xsd:boolean ;
+            sh:in ( true ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEPayment ],
+        [ dcterms:source "G130/H130",
+                "G131/H131" ;
+            sh:class epo:Period ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:hasContractNatureType ] ;
+            sh:path epo:definesContractPeriod ] ;
     sh:targetClass epo:ContractTerm .
 
 epo:LotAwardOutcome a sh:NodeShape ;
@@ -706,24 +706,19 @@ epo:LotAwardOutcome a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G217/H217",
-                "G218/H218" ;
-            sh:class epo:MonetaryValue ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasAwardedValue ],
-        [ dcterms:source "G182/H182",
-                "G183/H183" ;
-            sh:in ( <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw> <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> ) ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasAwardStatus ],
-        [ dcterms:source "G181/H181" ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasNonAwardedContractTitle ],
-        [ dcterms:source "G190/H190",
+    sh:property [ dcterms:source "G190/H190",
                 "G191/H191" ;
             sh:class epo:TenderAwardOutcome ;
             sh:nodeKind sh:IRI ;
             sh:path epo:comprisesTenderAwardOutcome ],
+        [ dcterms:source "G181/H181" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasNonAwardedContractTitle ],
+        [ dcterms:source "G182/H182",
+                "G183/H183" ;
+            sh:in ( <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw> ) ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAwardStatus ],
         [ dcterms:source "G186/H186",
                 "G187/H187" ;
             sh:in ( <http://publications.europa.eu/resource/authority/non-award-justification/other> <http://publications.europa.eu/resource/authority/non-award-justification/none-rej> ) ;
@@ -733,6 +728,11 @@ epo:LotAwardOutcome a sh:NodeShape ;
             sh:class epo:Lot ;
             sh:nodeKind sh:IRI ;
             sh:path epo:describesLot ],
+        [ dcterms:source "G217/H217",
+                "G218/H218" ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAwardedValue ],
         [ dcterms:source "G179/H179" ;
             sh:datatype xsd:string ;
             sh:nodeKind sh:Literal ;
@@ -745,12 +745,7 @@ epo:NoticeAwardInformation a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G109/H109",
-                "G111/H111" ;
-            sh:class epo:MonetaryValue ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasProcurementLowestReceivedTenderValue ],
-        [ dcterms:source "G108/H108",
+    sh:property [ dcterms:source "G108/H108",
                 "G111/H111" ;
             sh:class epo:MonetaryValue ;
             sh:nodeKind sh:IRI ;
@@ -759,7 +754,12 @@ epo:NoticeAwardInformation a sh:NodeShape ;
                 "G111/H111" ;
             sh:class epo:MonetaryValue ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:hasProcurementHighestReceivedTenderValue ] ;
+            sh:path epo:hasProcurementHighestReceivedTenderValue ],
+        [ dcterms:source "G109/H109",
+                "G111/H111" ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasProcurementLowestReceivedTenderValue ] ;
     sh:targetClass epo:NoticeAwardInformation .
 
 epo:Purpose a sh:NodeShape ;
@@ -768,12 +768,12 @@ epo:Purpose a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G92/H92" ;
+    sh:property [ dcterms:source "G117/H117" ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:hasMainClassification ],
-        [ dcterms:source "G117/H117" ;
+            sh:path epo:hasAdditionalClassification ],
+        [ dcterms:source "G92/H92" ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:hasAdditionalClassification ] ;
+            sh:path epo:hasMainClassification ] ;
     sh:targetClass epo:Purpose .
 
 <http://www.w3.org/ns/locn#Address> a sh:NodeShape ;
@@ -782,7 +782,24 @@ epo:Purpose a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G12/H12",
+    sh:property [ dcterms:source "G11/H11",
+                "G205/H205",
+                "G28/H28",
+                "G55/H55",
+                "G73/H73" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ],
+        [ dcterms:source "G203/H203",
+                "G239/H239",
+                "G249/H249",
+                "G26/H26",
+                "G260/H260",
+                "G53/H53",
+                "G71/H71",
+                "G9/H9" ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://www.w3.org/ns/locn#thoroughfare> ],
+        [ dcterms:source "G12/H12",
                 "G206/H206",
                 "G241/H241",
                 "G251/H251",
@@ -805,16 +822,6 @@ epo:Purpose a sh:NodeShape ;
                 "G75/H75" ;
             sh:nodeKind sh:IRI ;
             sh:path epo:hasCountryCode ],
-        [ dcterms:source "G203/H203",
-                "G239/H239",
-                "G249/H249",
-                "G26/H26",
-                "G260/H260",
-                "G53/H53",
-                "G71/H71",
-                "G9/H9" ;
-            sh:nodeKind sh:Literal ;
-            sh:path <http://www.w3.org/ns/locn#thoroughfare> ],
         [ dcterms:source "G10/H10",
                 "G204/H204",
                 "G240/H240",
@@ -824,14 +831,7 @@ epo:Purpose a sh:NodeShape ;
                 "G54/H54",
                 "G72/H72" ;
             sh:nodeKind sh:Literal ;
-            sh:path <http://www.w3.org/ns/locn#postName> ],
-        [ dcterms:source "G11/H11",
-                "G205/H205",
-                "G28/H28",
-                "G55/H55",
-                "G73/H73" ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasNutsCode ] ;
+            sh:path <http://www.w3.org/ns/locn#postName> ] ;
     sh:targetClass <http://www.w3.org/ns/locn#Address> .
 
 epo:Procedure a sh:NodeShape ;
@@ -840,31 +840,28 @@ epo:Procedure a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G235/H235" ;
+    sh:property [ dcterms:source "G90/H90" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasTitle ],
+        [ dcterms:source "G235/H235" ;
             sh:nodeKind sh:Literal ;
             sh:path epo:hasAdditionalInformation ],
-        [ dcterms:source "G156/H156",
-                "G157/H157",
-                "G158/H158",
-                "G159/H159",
-                "G272/H272",
-                "G274/H274" ;
-            sh:in ( <http://publications.europa.eu/resource/authority/procurement-procedure-type/open> <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call> <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call> <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted> ) ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasProcedureType ],
-        [ dcterms:source "G92/H92" ;
-            sh:class epo:Purpose ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasPurpose ],
-        [ dcterms:source "G161/H161" ;
-            sh:class epo:FrameworkAgreementTechniqueUsage ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:usesTechnique ],
         [ dcterms:source "G39/H39" ;
             sh:datatype xsd:boolean ;
             sh:in ( true ) ;
             sh:nodeKind sh:Literal ;
             sh:path epo:isJointProcurement ],
+        [ dcterms:source "G113/H113" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasProcurementScopeDividedIntoLot ],
+        [ dcterms:source "G95/H95" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDescription ],
+        [ dcterms:source "G92/H92" ;
+            sh:class epo:Purpose ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPurpose ],
         [ dcterms:source "G102/H102",
                 "G103/H103",
                 "G104/H104",
@@ -891,19 +888,17 @@ epo:Procedure a sh:NodeShape ;
                 "G42/H42",
                 "G65/H65" ;
             sh:nodeKind sh:IRI ;
-            sh:or ( [ sh:class epo:DirectAwardTerm ] [ sh:class epo:FrameworkAgreementTerm ] [ sh:class epo:SubmissionTerm ] [ sh:class epo:AccessTerm ] [ sh:class epo:ProcedureTerm ] [ sh:class epo:ReviewTerm ] ) ;
+            sh:or ( [ sh:class epo:DirectAwardTerm ] [ sh:class epo:ReviewTerm ] [ sh:class epo:AccessTerm ] [ sh:class epo:SubmissionTerm ] [ sh:class epo:FrameworkAgreementTerm ] [ sh:class epo:ProcedureTerm ] ) ;
             sh:path epo:isSubjectToProcedureSpecificTerm ],
+        [ dcterms:source "G91/H91" ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
         [ dcterms:source "G97/H97",
                 "G98/H98" ;
             sh:class epo:MonetaryValue ;
             sh:nodeKind sh:IRI ;
             sh:path epo:hasEstimatedValue ],
-        [ dcterms:source "G165/H165" ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasMainFeature ],
-        [ dcterms:source "G90/H90" ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasTitle ],
         [ dcterms:source "G232/H232",
                 "G233/H233",
                 "G234/H234",
@@ -911,22 +906,27 @@ epo:Procedure a sh:NodeShape ;
             sh:class epo:ContractTerm ;
             sh:nodeKind sh:IRI ;
             sh:path epo:foreseesContractSpecificTerm ],
-        [ dcterms:source "G91/H91" ;
-            sh:class epo:Identifier ;
+        [ dcterms:source "G161/H161" ;
+            sh:class epo:FrameworkAgreementTechniqueUsage ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:hasID ],
-        [ dcterms:source "G95/H95" ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasDescription ],
-        [ dcterms:source "G113/H113" ;
-            sh:class epo:Lot ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasProcurementScopeDividedIntoLot ],
+            sh:path epo:usesTechnique ],
         [ dcterms:source "G82/H82",
                 "G83/H83" ;
             sh:class <http://data.europa.eu/m8g/Channel> ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:usesChannel ] ;
+            sh:path epo:usesChannel ],
+        [ dcterms:source "G165/H165" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMainFeature ],
+        [ dcterms:source "G156/H156",
+                "G157/H157",
+                "G158/H158",
+                "G159/H159",
+                "G272/H272",
+                "G274/H274" ;
+            sh:in ( <http://publications.europa.eu/resource/authority/procurement-procedure-type/open> <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call> <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call> <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted> ) ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasProcedureType ] ;
     sh:targetClass epo:Procedure .
 
 epo:Lot a sh:NodeShape ;
@@ -935,22 +935,35 @@ epo:Lot a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G115/H115" ;
-            sh:class epo:Identifier ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasID ],
-        [ dcterms:source "G114/H114" ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasTitle ],
-        [ dcterms:source "G124/H124",
-                "G125/H125" ;
-            sh:class epo:MonetaryValue ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasEstimatedValue ],
-        [ dcterms:source "G117/H117" ;
+    sh:property [ dcterms:source "G117/H117" ;
             sh:class epo:Purpose ;
             sh:nodeKind sh:IRI ;
             sh:path epo:hasPurpose ],
+        [ dcterms:source "G122/H122" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDescription ],
+        [ dcterms:source "G135/H135" ;
+            sh:class epo:Fund ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:isFundedBy ],
+        [ dcterms:source "G115/H115" ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ dcterms:source "G215/H215",
+                "G216/H216" ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasRestatedEstimatedValue ],
+        [ dcterms:source "G133/H133",
+                "G134/H134" ;
+            sh:datatype xsd:boolean ;
+            sh:in ( false true ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isUsingEUFunds ],
+        [ dcterms:source "G114/H114" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasTitle ],
         [ dcterms:source "G120/H120",
                 "G121/H121",
                 "G127/H127",
@@ -964,24 +977,11 @@ epo:Lot a sh:NodeShape ;
         [ dcterms:source "G136/H136" ;
             sh:nodeKind sh:Literal ;
             sh:path epo:hasAdditionalInformation ],
-        [ dcterms:source "G135/H135" ;
-            sh:class epo:Fund ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:isFundedBy ],
-        [ dcterms:source "G122/H122" ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasDescription ],
-        [ dcterms:source "G215/H215",
-                "G216/H216" ;
+        [ dcterms:source "G124/H124",
+                "G125/H125" ;
             sh:class epo:MonetaryValue ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:hasRestatedEstimatedValue ],
-        [ dcterms:source "G133/H133",
-                "G134/H134" ;
-            sh:datatype xsd:boolean ;
-            sh:in ( false true ) ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:isUsingEUFunds ] ;
+            sh:path epo:hasEstimatedValue ] ;
     sh:targetClass epo:Lot .
 
 <http://data.europa.eu/m8g/ContactPoint> a sh:NodeShape ;
@@ -990,22 +990,16 @@ epo:Lot a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G14/H14",
-                "G31/H31",
-                "G58/H58",
-                "G76/H76" ;
+    sh:property [ dcterms:source "G16/H16",
+                "G208/H208",
+                "G243/H243",
+                "G253/H253",
+                "G264/H264",
+                "G33/H33",
+                "G60/H60",
+                "G78/H78" ;
             sh:nodeKind sh:Literal ;
-            sh:path epo:hasContactName ],
-        [ dcterms:source "G17/H17",
-                "G211/H211",
-                "G246/H246",
-                "G256/H256",
-                "G267/H267",
-                "G34/H34",
-                "G61/H61",
-                "G79/H79" ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasFax ],
+            sh:path <http://data.europa.eu/m8g/email> ],
         [ dcterms:source "G15/H15",
                 "G209/H209",
                 "G244/H244",
@@ -1026,16 +1020,22 @@ epo:Lot a sh:NodeShape ;
                 "G81/H81" ;
             sh:nodeKind sh:Literal ;
             sh:path epo:hasInternetAddress ],
-        [ dcterms:source "G16/H16",
-                "G208/H208",
-                "G243/H243",
-                "G253/H253",
-                "G264/H264",
-                "G33/H33",
-                "G60/H60",
-                "G78/H78" ;
+        [ dcterms:source "G14/H14",
+                "G31/H31",
+                "G58/H58",
+                "G76/H76" ;
             sh:nodeKind sh:Literal ;
-            sh:path <http://data.europa.eu/m8g/email> ] ;
+            sh:path epo:hasContactName ],
+        [ dcterms:source "G17/H17",
+                "G211/H211",
+                "G246/H246",
+                "G256/H256",
+                "G267/H267",
+                "G34/H34",
+                "G61/H61",
+                "G79/H79" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFax ] ;
     sh:targetClass <http://data.europa.eu/m8g/ContactPoint> .
 
 epo:Identifier a sh:NodeShape ;
@@ -1064,39 +1064,7 @@ org:Organization a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:nodeKind sh:IRI ;
-    sh:property [ dcterms:source "G208/H208",
-                "G209/H209",
-                "G210/H210",
-                "G211/H211",
-                "G243/H243",
-                "G244/H244",
-                "G245/H245",
-                "G246/H246",
-                "G253/H253",
-                "G254/H254",
-                "G255/H255",
-                "G256/H256",
-                "G264/H264",
-                "G265/H265",
-                "G266/H266",
-                "G267/H267" ;
-            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasPrimaryContactPoint ],
-        [ dcterms:source "G201/H201",
-                "G238/H238",
-                "G24/H24",
-                "G248/H248",
-                "G259/H259",
-                "G51/H51",
-                "G69/H69",
-                "G7/H7" ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasLegalName ],
-        [ dcterms:source "G87/H87" ;
-            sh:nodeKind sh:Literal ;
-            sh:path epo:hasMainActivityDescription ],
-        [ dcterms:source "G202/H202",
+    sh:property [ dcterms:source "G202/H202",
                 "G25/H25",
                 "G52/H52",
                 "G70/H70",
@@ -1104,9 +1072,6 @@ org:Organization a sh:NodeShape ;
             sh:class epo:Identifier ;
             sh:nodeKind sh:IRI ;
             sh:path epo:hasID ],
-        [ dcterms:source "G86/H86" ;
-            sh:nodeKind sh:IRI ;
-            sh:path epo:hasMainActivity ],
         [ dcterms:source "G10/H10",
                 "G11/H11",
                 "G12/H12",
@@ -1147,12 +1112,47 @@ org:Organization a sh:NodeShape ;
             sh:class <http://www.w3.org/ns/locn#Address> ;
             sh:nodeKind sh:IRI ;
             sh:path <http://data.europa.eu/m8g/registeredAddress> ],
-        [ dcterms:source "G85/H85" ;
+        [ dcterms:source "G201/H201",
+                "G238/H238",
+                "G24/H24",
+                "G248/H248",
+                "G259/H259",
+                "G51/H51",
+                "G69/H69",
+                "G7/H7" ;
             sh:nodeKind sh:Literal ;
-            sh:path epo:hasBuyerLegalTypeDescription ],
+            sh:path epo:hasLegalName ],
+        [ dcterms:source "G87/H87" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMainActivityDescription ],
+        [ dcterms:source "G86/H86" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasMainActivity ],
+        [ dcterms:source "G208/H208",
+                "G209/H209",
+                "G210/H210",
+                "G211/H211",
+                "G243/H243",
+                "G244/H244",
+                "G245/H245",
+                "G246/H246",
+                "G253/H253",
+                "G254/H254",
+                "G255/H255",
+                "G256/H256",
+                "G264/H264",
+                "G265/H265",
+                "G266/H266",
+                "G267/H267" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPrimaryContactPoint ],
         [ dcterms:source "G84/H84" ;
             sh:nodeKind sh:IRI ;
-            sh:path epo:hasBuyerLegalType ] ;
+            sh:path epo:hasBuyerLegalType ],
+        [ dcterms:source "G85/H85" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBuyerLegalTypeDescription ] ;
     sh:targetClass org:Organization .
 
 epo:MonetaryValue a sh:NodeShape ;
