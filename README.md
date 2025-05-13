@@ -2,8 +2,7 @@
 
 🛠️ A tool to generate SHACL shapes from Conceptual Mapping.
 
-CM2SHACL is a part of the broader **SHACL-Driven Consistency Validator** framework, serving as a dedicated module for extracting SHACL shapes from Conceptual Mapping (CM) artefacts invovled in the TED Mapping Workflow.  
-These shapes support cross-layer consistency validation within TED mapping workflows.
+CM2SHACL is a part of the broader [**SHACL-Driven Consistency Validator**](https://github.com/meaningfy-ws/shacl-driven-consistency-validation), serving as a dedicated module for extracting SHACL shapes from Conceptual Mapping (CM) artefacts invovled in the TED Mapping Workflow.  
 
 ---
 
@@ -41,18 +40,18 @@ usage: main.py [-h] [-cm CM_FILE] [-cf CONFIG_FILE] [-cv CM_VERSION] [-o OUTPUT_
 Translate Conceptual Mapping to SHACL.
 
 options:
-  -h, --help                            show this help message and exit
-  -cm CM_FILE, --cm_file CM_FILE         conceptual mapping file location
+  -h, --help                            Show this help message and exit
+  -cm CM_FILE, --cm_file CM_FILE         Conceptual mapping file location
   -cf CONFIG_FILE, --config_file CONFIG_FILE
-                                         config file location
+                                         Config file location
   -cv CM_VERSION, --cm_version CM_VERSION
-                                         conceptual mapping version in config file
+                                         Conceptual mapping version in config file
   -o OUTPUT_FILE, --output_file OUTPUT_FILE
-                                         output file location
+                                         Output file location
   --validation_shacl VALIDATION_SHACL    SHACL shapes used to validate RDF graph
   --validation_rdf VALIDATION_RDF        RDF graph to validate
-  --validation_report VALIDATION_REPORT  output file location for validation report
-  --close_shapes CLOSE_SHAPES            specify whether to close shapes
+  --validation_report VALIDATION_REPORT  Output file location for validation report
+  --close_shapes CLOSE_SHAPES            Specify whether to close shapes
 ```
 
 ---
@@ -100,6 +99,7 @@ If `--validation_shacl` is not specified, the tool will default to the SHACL gen
 ## 🧪 Evaluation
 
 We evaluated CM2SHACL's effectiveness by applying it to the TED mapping suites and validating the generated SHACL shapes against RDF data.
+The evaluatation results are placed in evaluation folder. To reproduce the results, you can run:
 
 - **Default Mode** (without closed shapes):
 
